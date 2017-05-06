@@ -13,6 +13,8 @@
     console.log("VM", vm);
 
     vm.$onInit = populate
+    vm.createComment = createComment
+    vm.comments = []
 
     vm.createPost = function createPost(event, author) {
       event.preventDefault()
@@ -45,6 +47,17 @@
         image: 'http://aorta.coop/sites/default/files/imagecache/trainer_about_image/dsc_03111_0.jpg'
       }]
     }
+
+    function createComment(event, comment) {
+      event.preventDefault()
+      let opinion = {
+        text: vm.comment
+      }
+
+      vm.comments.push(opinion)
+      delete vm.comment
+    }
+
   } // end of BindForm
 
 })();

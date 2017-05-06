@@ -40,8 +40,7 @@
         <div ng-class="{
           'has-error': $ctrl.newPost.image.$invalid && !$ctrl.newPost.image.$pristine}">
           <label for="image-url">Image URL</label>
-          <input id="image" class="form-control" ng-model="$ctrl.post.image" ng-pattern="/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})
-/" name="image" required>
+          <input id="image" class="form-control" ng-model="$ctrl.post.image" name="image" ng-minlength="8" required>
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary" ng-class="{'disabled': $ctrl.newPost.$invalid}">
@@ -86,15 +85,15 @@
          <div class="row">
            <div class="col-md-offset-1">
              <hr>
-             <p>
-               Comment text
+             <p ng-repeat="comment in $ctrl.comments">
+               {{comment.text}}
              </p>
-             <form class="form-inline">
-               <div class="form-group">
-                 <input class="form-control">
+             <form novalidate class="form-inline" name="$ctrl.newComment" ng-submit="$ctrl.createComment($event, comment)" action="#">
+               <div class="form-group" ng-class="{'has-error': $ctrl.newComment.$invalid && !$ctrl.newComment.comment.$pristine}">
+                 <input class="form-control ng-pristine" id="comment" name="comment" ng-model="$ctrl.comment" ng-minlength="2" required>
                </div>
                <div class="form-group">
-                 <input type="submit" class="btn btn-primary">
+                 <input type="submit" class="btn btn-primary" ng-class="{'disabled': $ctrl.newComment.$invalid}">
                </div>
              </form>
            </div>
