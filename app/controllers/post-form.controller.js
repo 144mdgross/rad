@@ -30,12 +30,19 @@
     }
 
     $scope.val = 2
+    $scope.commentVal = 2
+    $scope.commentEven = true
     $scope.even = true
 
     // this is for ngShow
     $scope.counter = function() {
       $scope.val += 1
       $scope.even = $scope.val % 2 === 0
+    }
+
+    $scope.commentCounter = function() {
+      $scope.commentVal += 1
+      $scope.commentEven = $scope.commentVal % 2 === 0
     }
 
     function populate() {

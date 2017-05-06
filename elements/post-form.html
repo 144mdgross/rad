@@ -78,14 +78,14 @@
            {{post.time}}
            |
            <i class="glyphicon glyphicon-comment"></i>
-           <a>
+           <a ng-click="commentCounter()">
              Some comments
            </a>
          </div>
          <div class="row">
            <div class="col-md-offset-1">
              <hr>
-             <p ng-repeat="comment in $ctrl.comments">
+             <p ng-repeat="comment in $ctrl.comments" ng-show="commentEven">
                {{comment.text}}
              </p>
              <form novalidate class="form-inline" name="$ctrl.newComment" ng-submit="$ctrl.createComment($event, comment)" action="#">
