@@ -15,6 +15,8 @@
     vm.$onInit = populate
     vm.createComment = createComment
     vm.comments = []
+    // see vm.votes below scope variables
+
 
     vm.createPost = function createPost(event, author) {
       event.preventDefault()
@@ -33,7 +35,8 @@
     $scope.commentVal = 2
     $scope.commentEven = true
     $scope.even = true
-
+    $scope.vote= 0
+    vm.votes = $scope.vote
     // this is for ngShow
     $scope.counter = function() {
       $scope.val += 1
@@ -43,6 +46,18 @@
     $scope.commentCounter = function() {
       $scope.commentVal += 1
       $scope.commentEven = $scope.commentVal % 2 === 0
+    }
+
+    $scope.voteUp = function() {
+      console.log("voting up");
+      $scope.vote += 1
+      vm.votes = $scope.vote
+    }
+
+    $scope.voteDown = function () {
+      console.log("voting down");
+      $scope.vote === 0 ? $scope.vote = 0 : $scope.vote -= 1
+      vm.votes = $scope.vote
     }
 
     function populate() {
