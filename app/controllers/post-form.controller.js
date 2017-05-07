@@ -25,7 +25,9 @@
         author: vm.post.author,
         body: vm.post.body,
         time: '1 hour ago',
-        image: vm.post.image
+        image: vm.post.image,
+        votes: 0,
+        comments: []
       }
       vm.posts.push(buildPost)
       delete vm.author
@@ -35,8 +37,6 @@
     $scope.commentVal = 2
     $scope.commentEven = true
     $scope.even = true
-    $scope.vote= 0
-    vm.votes = $scope.vote
     // this is for ngShow
     $scope.counter = function() {
       $scope.val += 1
@@ -48,16 +48,14 @@
       $scope.commentEven = $scope.commentVal % 2 === 0
     }
 
-    $scope.voteUp = function() {
+    $scope.voteUp = function(post) {
       console.log("voting up");
-      $scope.vote += 1
-      vm.votes = $scope.vote
+      post.votes += 1
     }
 
-    $scope.voteDown = function () {
+    $scope.voteDown = function (post) {
       console.log("voting down");
-      $scope.vote === 0 ? $scope.vote = 0 : $scope.vote -= 1
-      vm.votes = $scope.vote
+      post.votes === 0 ? post.votes = 0 : post.votes -= 1
     }
 
     function populate() {
@@ -66,7 +64,8 @@
         author: 'Esteban Kelly',
         body: 'the Anit-Opression Resource and Training Alliance is a great resource for everyone.',
         time: '1 hour ago',
-        image: 'http://aorta.coop/sites/default/files/imagecache/trainer_about_image/dsc_03111_0.jpg'
+        image: 'http://aorta.coop/sites/default/files/imagecache/trainer_about_image/dsc_03111_0.jpg',
+        votes: 0
       }]
     }
 
