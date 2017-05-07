@@ -5,7 +5,7 @@
 
 <ul class="nav nav-pills">
     <li role="presentation" class="active">
-      <input type="search" class="form-control input-sm search-form" placeholder="Filter">
+      <input type="search" class="form-control input-sm search-form" ng-model="$ctrl.filterText" placeholder="Filter">
     </li>
     <div class="form-inline">
       <label for="sort">  Sort by </label>
@@ -54,7 +54,7 @@
   <div class="row">
    <div class="col-md-12">
 
-     <div class="well" ng-repeat="post in $ctrl.posts | orderBy:$ctrl.select">
+     <div class="well" ng-repeat="post in $ctrl.posts | filter:$ctrl.filterText | orderBy:$ctrl.select">
        <div class="media-left">
          <img src="{{post.image}}" class="media-object">
        </div>
@@ -73,7 +73,7 @@
            {{post.body}}
          </p>
          <div>
-           {{post.time}}
+           <span am-time-ago="post.date"> </span>
            |
            <i class="glyphicon glyphicon-comment"></i>
            <a ng-click="reveal =! reveal">

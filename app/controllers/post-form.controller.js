@@ -23,7 +23,7 @@
     vm.createPost = function createPost(event, author) {
       event.preventDefault()
       vm.post.votes = 0
-      vm.post.date = new Date
+      vm.post.date = new Date()
       vm.post.comments = []
       vm.posts.push(vm.post)
       delete vm.author
@@ -80,9 +80,6 @@
       delete post.comment
     }
 
-    function sort(choice) {
-      $scope.selected = choice
-    }
 
   } // end of BindForm
 
