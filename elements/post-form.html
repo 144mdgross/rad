@@ -1,6 +1,6 @@
 
 <div class="pull-right">
-    <p><a class="btn btn-info" ng-click="counter()">New Post</a></p>
+    <p><a class="btn btn-info" ng-click="counter()" ng-model="buttonName">{{$ctrl.buttonName}}</a></p>
 </div>
 
 <ul class="nav nav-pills">
@@ -22,7 +22,7 @@
       <form novalidate ng-submit="$ctrl.createPost($event, post)" name="$ctrl.newPost" class="form" action="#">
         <div ng-class="{
           'has-error': $ctrl.newPost.title.$invalid && !$ctrl.newPost.title.$pristine}">
-          <label for="title">Title</label>
+          <label for="title" class="form">Title</label>
           <input id="title" class="form-control ng-pristine" ng-model="$ctrl.post.title" required ng-minlength="1" type="text" name="title">
         </div>
         <div ng-class="{
@@ -54,7 +54,7 @@
   <div class="row">
    <div class="col-md-12">
 
-     <div class="well" ng-repeat="post in $ctrl.posts | filter:$ctrl.filterText | orderBy:$ctrl.select">
+     <div class="well shadow" ng-repeat="post in $ctrl.posts | filter:$ctrl.filterText | orderBy:$ctrl.select">
        <div class="media-left">
          <img src="{{post.image}}" class="media-object">
        </div>
@@ -67,13 +67,13 @@
            {{post.votes}}
          </h4>
          <div class="text-right">
-           {{post.author}}
+           <p class="highlight">{{post.author}}</p>
          </div>
          <p>
            {{post.body}}
          </p>
          <div>
-           <span am-time-ago="post.date"> </span>
+           <span am-time-ago="post.time"> </span>
            |
            <i class="glyphicon glyphicon-comment"></i>
            <a ng-click="reveal =! reveal">

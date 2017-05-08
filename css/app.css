@@ -1,3 +1,20 @@
+body {
+  /*background-image: url('https://s-media-cache-ak0.pinimg.com/736x/22/23/64/2223640d2feb2a8b04738cb70b81bb9b.jpg');*/
+  /*background-image: url('https://s-media-cache-ak0.pinimg.com/originals/1c/14/88/1c14888c5b10d89fa250c58ba771dad1.jpg');*/
+  background-image: url('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSvMqBap4lUd0ehVpuAjzGHpERsvtVp6SgKAZoHMhICRMSK0kyo');
+  background-repeat: repeat-y;
+  background-position: right;
+}
+
+main {
+  /*background-color: rgba(178, 1, 42, 0.2);*/
+ /**/
+}
+
+#focal {
+  color: rgba(121, 6, 33, 0.96);
+  font-size: 1.5em;
+}
 .media-object {
   max-width: 200px;
 }
@@ -12,4 +29,19 @@
 
 main.container {
   margin-bottom: 4em;
+}
+
+.highlight {
+  font-weight: 700;
+  font-size: 1.5em;
+  color: #30B2CD;
+}
+
+.form{
+  font-weight: 700;
+  color: rgba(37, 42, 70, 0.96);
+}
+
+.shadow {
+  box-shadow: 10px 10px 5px #888888;
 }
