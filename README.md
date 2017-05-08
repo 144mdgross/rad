@@ -1,4 +1,5 @@
 # rad
+Resistance, Advocacy and Doing things for ourselves (RAD)
 
 ## Setup
 
