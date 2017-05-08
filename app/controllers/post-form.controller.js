@@ -2,7 +2,7 @@
   'use strict'
 
   angular
-    .module('app', [])
+    .module('app', ['angularMoment'])
     .component('newPost', {
       controller: ('BindForm', BindForm),
       templateUrl: `../../elements/post-form.html`
@@ -10,7 +10,6 @@
 
   function BindForm($scope) {
     const vm = this
-    console.log("VM", vm);
 
     vm.$onInit = populate
     vm.createComment = createComment
