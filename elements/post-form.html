@@ -19,7 +19,7 @@
 <div class="row" ng-show="even">
     <div class="col-md-8">
 
-      <form novalidate ng-submit="$ctrl.createPost($event, post)" name="$ctrl.newPost" class="form" action="#">
+      <form novalidate ng-submit="$ctrl.createPost($event, post); $ctrl.newPost.$setPristine()" name="$ctrl.newPost" class="form" action="#">
         <div ng-class="{
           'has-error': $ctrl.newPost.title.$invalid && !$ctrl.newPost.title.$pristine}">
           <label for="title" class="form">Title</label>
@@ -54,7 +54,7 @@
   <div class="row">
    <div class="col-md-12">
 
-     <div class="well shadow" ng-repeat="post in $ctrl.posts | filter:$ctrl.filterText | orderBy:$ctrl.select">
+     <div class="well shadow" ng-repeat="post in $ctrl.posts | filter:$ctrl.filterText | orderBy:$ctrl.select:true">
        <div class="media-left">
          <img src="{{post.image}}" class="media-object">
        </div>

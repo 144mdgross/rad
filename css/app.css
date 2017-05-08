@@ -1,14 +1,7 @@
 body {
-  /*background-image: url('https://s-media-cache-ak0.pinimg.com/736x/22/23/64/2223640d2feb2a8b04738cb70b81bb9b.jpg');*/
-  /*background-image: url('https://s-media-cache-ak0.pinimg.com/originals/1c/14/88/1c14888c5b10d89fa250c58ba771dad1.jpg');*/
   background-image: url('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSvMqBap4lUd0ehVpuAjzGHpERsvtVp6SgKAZoHMhICRMSK0kyo');
   background-repeat: repeat-y;
   background-position: right;
-}
-
-main {
-  /*background-color: rgba(178, 1, 42, 0.2);*/
- /**/
 }
 
 #focal {

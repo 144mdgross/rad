@@ -15,11 +15,7 @@
     vm.$onInit = populate
     vm.createComment = createComment
     vm.sort = sort
-    vm.buttonName = 'Hide Form'
-
-
-    // see vm.votes below scope variables
-
+    vm.buttonName = 'New Post'
 
     vm.createPost = function createPost(event, author) {
       event.preventDefault()
@@ -27,15 +23,15 @@
       vm.post.time = new Date()
       vm.post.comments = []
       vm.posts.push(vm.post)
-      delete vm.author
+      delete vm.post
     }
 
-    $scope.val = 2
-    $scope.even = true
-    $scope.options = ['-votes', 'title', 'date']
+    $scope.val = 3
+    $scope.even = false
+    $scope.options = ['votes', 'title', 'date']
     $scope.selected = $scope.options[0]
     vm.select = $scope.selected
-        console.log("select", vm.select);
+
     // controlls ngShow on create post form
     $scope.counter = function() {
       $scope.val += 1
@@ -73,7 +69,7 @@
         time: new Date(),
         image: 'http://aorta.coop/sites/default/files/imagecache/trainer_about_image/fullsizerender.jpg',
         votes: 14,
-        comments: [{ text: 'check out Autumn\'s publication Octavia’s Brood: Science Fiction Stories from Social Justice Movements (AK Press, 2015)'}]
+        comments: [{ text: 'check out Autumn\'s publication Octavia’s Brood: Science Fiction Stories from Social Justice Movements (AK Press, 2015)' }]
       },
       {
         title: 'REPARATIONS: HOW ARE WE DOING IT?',
@@ -89,14 +85,11 @@
 
     function createComment(event, post) {
       event.preventDefault()
-      if(post.comment !== undefined) {
-        console.log(post.comment);
-      post.comments.push(post.comment)
+      if (post.comment !== undefined) {
+        post.comments.push(post.comment)
       }
       delete post.comment
     }
-
-
   } // end of BindForm
 
 })();
