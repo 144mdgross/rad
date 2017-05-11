@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const knex = require('../db')
+const knex = require('../../db')
 
 router.get('/:post_id/comments', (req, res, next) => {
   knex('comments')

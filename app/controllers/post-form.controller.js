@@ -1,6 +1,7 @@
 (function() {
   'use strict'
 
+console.log('post-form-controller');
   angular
     .module('app', ['angularMoment'])
     .component('newPost', {

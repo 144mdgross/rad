@@ -1,5 +1,5 @@
-dropdb reddit-clone --if-exists
-dropdb reddit-clone-test --if-exists
+dropdb rad --if-exists
+dropdb rad_test --if-exists
 
 createdb reddit-clone
 createdb reddit-clone-test

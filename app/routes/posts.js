@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const knex = require('../db')
+const knex = require('../../db')
 
 router.get('/', (req, res, next) => {
   knex('posts')

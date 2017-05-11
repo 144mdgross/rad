@@ -11,6 +11,7 @@
   function BindForm($scope) {
     const vm = this
 
+    console.log("vm", vm);
     vm.$onInit = populate
     vm.createComment = createComment
     vm.sort = sort
@@ -46,7 +47,7 @@
       post.votes += 1
     }
 
-    $scope.voteDown = function (post) {
+    $scope.voteDown = function(post) {
       post.votes === 0 ? post.votes = 0 : post.votes -= 1
     }
 
@@ -90,5 +91,4 @@
       delete post.comment
     }
   } // end of BindForm
-
 })();
