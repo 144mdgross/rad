@@ -11,13 +11,13 @@
 
 // inject dependencies into params here
 
-  function controller($scope, $http) {
+  function controller($state, $scope, $http) {
     const vm = this
     console.log(vm);
 
     vm.$onInit = onInit
-    // vm.post = post
-    // vm.comment = comment
+    vm.createPost = createPost
+    vm.createComment = createComment
     vm.buttonName = 'New Post'
 
     $scope.val = 3
@@ -37,35 +37,45 @@
   }
 
   $scope.voteUp = function(post) {
-    post.votes += 1
+    post.vote_count += 1
   }
 
   $scope.voteDown = function (post) {
-    post.votes === 0 ? post.votes = 0 : post.votes -= 1
+    post.vote_count === 0 ? post.vote_count = 0 : post.vote_count -= 1
   }
 
 
     function onInit() {
       $http.get('/api/posts')
         .then(response => {
-          console.log(response);
           vm.posts =response.data
+          for (var i = 0; i < newPost.length; i++) {
+            $http.get(`/api/posts/${newPost[i].id}/comments`)
+              .then(comments => {
+                vm.posts.comments = comments
+              })
+          }
         })
     }
-    //
-    // function post(event, post){
-    //   event.preventDefault()
-    //   // placeholder for now
-    //   // PostService.createPost(vm.post)
-    // }
 
-    // function comment(event, comment) {
-    //   // do I need this?
-    //   event.preventDefault()
-    //
-    //   // this is a placeholder for now.
-    //   // PostService.createComment(vm.comment)
-    //
-    // }
+    function createPost(event){
+      event.preventDefault()
+
+      $http.post('/api/posts', vm.post)
+        .then(newPost => {
+          delete vm.post
+          onInit()
+        })
+    }
+
+    function createComment(event, post) {
+      event.preventDefault()
+
+      $http.post(`/api/posts/${post.id}/comments`, { 'post_id': post.id, 'content': post.comment.text })
+        .then(thoughts => {
+          onInit()
+        })
+
+    }
   }
 })()
