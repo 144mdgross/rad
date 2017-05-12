@@ -5,9 +5,8 @@ angular
   .module('app')
   .service('PostService', PostService)
 
-PostService.$inject = ['$http']
 
-function PostService($http) {
+funciton PostService($http) {
   const BASE_URL = '/api/posts'
 
   this.getPosts = function() {
@@ -30,5 +29,7 @@ function PostService($http) {
     return $http.delete(BASE_URL + '/' + id)
   }
 }
+
+PostService.$inject = ['$http']
 
 })()

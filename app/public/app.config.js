@@ -17,17 +17,11 @@
         url: '/',
         component: 'posts'
       })
-      // .state({
-      //   name: 'new',
-      //   url: '/houses/new',
-      //   component: 'houseNew'
-      // })
-      // .state({
-      //   name: 'show',
-      //   url: '/houses/:id',
-      //   component: 'houseShow'
-      // })
-
+      .state({
+        name: 'edit',
+        url: '/posts/:id/edit',
+        component: 'update'
+      })
   }
 
 }());

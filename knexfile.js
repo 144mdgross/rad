@@ -3,7 +3,7 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      database: process.env.DATABASE_URL || 'rad',
+      database: process.env.DATABASE_URL || 'rad_dev',
     }
   },
 
