@@ -44,6 +44,12 @@
     post.vote_count === 0 ? post.vote_count = 0 : post.vote_count -= 1
   }
 
+  $scope.del = function(id) {
+    $http.delete(`/api/posts/${id}`)
+      .then(gone => {
+        onInit()
+      })
+  }
 
     function onInit() {
       $http.get('/api/posts')
