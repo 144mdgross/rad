@@ -2,6 +2,7 @@
 <html ng-app="app">
 
 <head>
+      <base href="/">
 
     <!-- jquery -->
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
@@ -27,7 +28,7 @@
 </head>
 
 <body>
-        <nav class="navbar navbar-default">
+        <!-- <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -42,14 +43,16 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 </div>
             </div>
-        </nav>
-    <main class="container">
-      <new-post> </new-post>
-    </main>
+        </nav> -->
+
+      <ui-view></ui-view>
+
     <script src="/angular/angular.min.js"></script>
+    <script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="/moment/moment.js"></script>
     <script src="/angular-moment/angular-moment.js"></script>
     <script src="/app.module.js" charset="utf-8"></script>
+    <script src="/app.config.js" charset="utf-8"></script>
     <script src="/controllers/post-form.controller.js" charset="utf-8"></script>
 </body>
 
