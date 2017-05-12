@@ -11,8 +11,9 @@
 
 // inject dependencies into params here
 
-  function controller($scope) {
+  function controller($scope, $http) {
     const vm = this
+    console.log(vm);
 
     vm.$onInit = onInit
     // vm.post = post
@@ -45,9 +46,11 @@
 
 
     function onInit() {
-      vm.posts = [{
-        title: 'Sadly untitled'
-      }]
+      $http.get('/api/posts')
+        .then(response => {
+          console.log(response);
+          vm.posts =response.data
+        })
     }
     //
     // function post(event, post){

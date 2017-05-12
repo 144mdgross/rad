@@ -35,7 +35,7 @@ exports.seed = function(knex, Promise) {
           "REPARATIONS: HOW ARE WE DOING IT?",
           text3,
           'Ed Whitfeild',
-          'https://images.pexels.com/photos/4787/feet-hipster-longboard-skateboard.jpg?h=350&auto=compress',
+          'https://f4dc.org/wp-content/uploads/2014/04/ed-whitfield-usfwc-2012-300x200.jpg',
           new Date(2016, 09, 27)
         ),
       ])
