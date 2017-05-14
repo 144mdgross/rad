@@ -11,7 +11,7 @@
 
 // inject dependencies into params here
 
-  function controller($state, $scope, $http) {
+  function controller($state, $stateParams, $scope, $http) {
     const vm = this
     console.log(vm);
 

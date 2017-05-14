@@ -3,12 +3,10 @@
 
   angular.module('app').config(config)
 
-  // TODO: figure out how to configure the app correctly
   config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider']
 
   function config($stateProvider, $urlRouterProvider, $locationProvider){
 
-    // this line is optional
     $locationProvider.html5Mode(true)
 
     $stateProvider
@@ -20,8 +18,7 @@
       .state({
         name: 'edit',
         url: '/posts/:id/edit',
-        component: 'update'
+        component: 'editPost'
       })
   }
-
 }());
