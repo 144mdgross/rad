@@ -8,11 +8,31 @@ angular
     templateUrl: `../elements/edit-post.html`
   })
 
-  function controller() {
+  function controller($stateParams, $state, $http) {
     const vm = this
     console.log("edit vm", vm);
 
+    vm.$onInit = onInit
+    vm.updatePost = updatePost
 
+    function onInit() {
+      $http.get(`/api/posts/${$stateParams.id}`)
+        .then(response => {
+          vm.posts =response.data
+            $http.get(`/api/posts/${response.data.id}/comments`)
+              .then(comments => {
+                vm.posts.comments = comments.data
+              })
+
+        })
+    }
+
+    function updatePost(event, post) {
+      event.preventDefault()
+      $http.patch(`/api/posts/${$stateParams.id}`, vm.post)
+        .then(updated => {
+          $state.go('posts')
+        })
+    }
   }
-
 })()

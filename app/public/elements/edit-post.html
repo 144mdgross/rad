@@ -1,30 +1,30 @@
-<div class="row" ng-show="even">
+<div class="row">
     <div class="col-md-8">
 
-      <form novalidate ng-submit="$ctrl.createPost($event, post); $ctrl.newPost.$setPristine()" name="$ctrl.newPost" class="form" action="#">
+      <form novalidate ng-submit="$ctrl.updatePost($event, post); $ctrl.editPost.$setPristine()" name="$ctrl.editPost" class="form" action="#">
         <div ng-class="{
-          'has-error': $ctrl.newPost.title.$invalid && !$ctrl.newPost.title.$pristine}">
+          'has-error': $ctrl.editPost.title.$invalid && !$ctrl.editPost.title.$pristine}">
           <label for="title" class="form">Title</label>
           <input id="title" class="form-control ng-pristine" ng-model="$ctrl.post.title" required ng-minlength="1" type="text" name="title">
         </div>
         <div ng-class="{
-          'has-error': $ctrl.newPost.body.$invalid && !$ctrl.newPost.body.$pristine}">
+          'has-error': $ctrl.editPost.body.$invalid && !$ctrl.editPost.body.$pristine}">
           <label for="body">Body</label>
           <textarea id="body" class="form-control ng-pristine" ng-model="$ctrl.post.body" ng-minlength="3" required type="text" name="body" ></textarea>
         </div>
         <div ng-class="{
-          'has-error': $ctrl.newPost.author.$invalid && !$ctrl.newPost.author.$pristine }">
+          'has-error': $ctrl.editPost.author.$invalid && !$ctrl.editPost.author.$pristine }">
           <label for="author">Author</label>
           <input id="author" class="form-control ng-pristine" ng-model="$ctrl.post.author" ng-minlength="2" name="author" required>
         </div>
         <div ng-class="{
-          'has-error': $ctrl.newPost.image.$invalid && !$ctrl.newPost.image.$pristine}">
+          'has-error': $ctrl.editPost.image.$invalid && !$ctrl.editPost.image.$pristine}">
           <label for="image-url">Image URL</label>
           <input id="image" class="form-control" ng-model="$ctrl.post.image_url" name="image" ng-minlength="8" required>
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary" ng-class="{'disabled': $ctrl.newPost.$invalid}" ng-disabled="$ctrl.newPost.$invalid">
-            Create Post
+          <button type="submit" class="btn btn-primary" ng-class="{'disabled': $ctrl.editPost.$invalid}" ng-disabled="$ctrl.editPost.$invalid">
+            Update Post {{$ctrl.posts.id}}
           </button>
         </div>
       </form>
@@ -36,47 +36,35 @@
   <div class="row">
    <div class="col-md-12">
 
-     <div class="well shadow" ng-repeat="post in $ctrl.posts | filter:$ctrl.filterText | orderBy:$ctrl.select:true">
-       <a><i class="glyphicon glyphicon-pencil pull-right" ng-click="voteUp(post)"></i></a>
-       <a><i class="glyphicon glyphicon-remove pull-right" ng-click="del(post.id)"></i></a>
+     <div class="well shadow">
        <div class="media-left">
-         <img src="{{post.image_url}}" class="media-object">
+         <img src="{{$ctrl.posts.image_url}}" class="media-object">
        </div>
        <div class="media-body">
          <h4 class="media-heading">
-           {{post.title}}
+           {{$ctrl.posts.title}}
            |
-           <a><i class="glyphicon glyphicon-arrow-up" ng-click="voteUp(post)"></i></a>
-           <a><i class="glyphicon glyphicon-arrow-down" ng-click="voteDown(post)"></i></a>
-           {{post.vote_count}}
+           {{$ctrl.posts.vote_count}}
          </h4>
          <div class="text-right">
-           <p class="highlight">{{post.author}}</p>
+           <p class="highlight">{{$ctrl.posts.author}}</p>
          </div>
          <p>
-           {{post.body}}
+           {{$ctrl.posts.body}}
          </p>
          <div>
-           <span am-time-ago="post.created_at"></span>
+           <span am-time-ago="$ctrl.posts.created_at"></span>
            |
            <i class="glyphicon glyphicon-comment"></i>
            <a ng-click="reveal = !reveal">
-             <ng-pluralize count="post.comments.length" when="{'0': 'no comments', 'one': '1 comment', 'other': '{} comments'}"> </ng-pluralize>
+             <ng-pluralize count="$ctrl.posts.comments.length" when="{'0': 'no comments', 'one': '1 comment', 'other': '{} comments'}"> </ng-pluralize>
            </a>
          </div>
          <div class="row">
            <div class="col-md-offset-1">
              <hr>
-             <p ng-repeat="comment in post.comments track by $index" ng-show="reveal">
+             <p ng-repeat="comment in $ctrl.posts.comments track by $index" ng-show="reveal">
                {{comment.content}} </p>
-             <form novalidate class="form-inline" name="$ctrl.newComment" ng-submit="$ctrl.createComment($event, post)" action="#">
-               <div class="form-group">
-                 <input class="form-control" id="comment" name="comment" ng-model="post.comment.text" ng-minlength="2" required>
-               </div>
-               <div class="form-group">
-                 <input type="submit" class="btn btn-primary">
-               </div>
-             </form>
            </div>
          </div>
        </div>

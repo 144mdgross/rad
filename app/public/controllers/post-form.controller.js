@@ -22,7 +22,7 @@
 
     $scope.val = 3
     $scope.even = false
-    $scope.options = ['votes', 'title', 'date']
+    $scope.options = ['vote_count', 'title', 'date']
     $scope.selected = $scope.options[0]
     vm.select = $scope.selected
 
