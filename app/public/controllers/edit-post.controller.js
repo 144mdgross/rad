@@ -8,6 +8,8 @@ angular
     templateUrl: `../elements/edit-post.html`
   })
 
+  controller.$inject = ['$stateParams', '$state', '$http']
+
   function controller($stateParams, $state, $http) {
     const vm = this
     console.log("edit vm", vm);
@@ -23,7 +25,6 @@ angular
               .then(comments => {
                 vm.posts.comments = comments.data
               })
-
         })
     }
 

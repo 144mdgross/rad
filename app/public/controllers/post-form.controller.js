@@ -9,7 +9,7 @@
       templateUrl: `../elements/post-form.html`
     })
 
-// inject dependencies into params here
+    controller.$inject = ['$state', '$stateParams', '$scope', '$http']
 
   function controller($state, $stateParams, $scope, $http) {
     const vm = this
