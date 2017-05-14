@@ -1,12 +1,11 @@
-// how do I want to organize my controllers and compnenets?
-// i think i like separate controllers more than a bundle of controllers in one file.
-
 (function () {
+  'use strict'
+
   angular
     .module('app')
     .component('posts', {
       controller: controller,
-      templateUrl: `../elements/post-form.html`
+      templateUrl: `../elements/post-form.template.html`
     })
 
     controller.$inject = ['$state', '$stateParams', '$scope', '$http']
@@ -45,7 +44,6 @@
       .then(increment => {
             sort()
       })
-
   }
 
   $scope.voteDown = function (post) {
@@ -54,6 +52,7 @@
       .then(increment => {
             sort()
       })
+      .catch(err => console.log(err))
   }
 
   $scope.del = function(id) {
@@ -72,6 +71,7 @@
               .then(comments => {
                 vm.posts.comments = comments
               })
+              .catch(err => console.log(err))
           }
         })
     }
@@ -93,10 +93,10 @@
         .then(thoughts => {
           onInit()
         })
+        .catch(err => console.log(err))
     }
-
     function sort() {
-      vm.select === 'votes' || vm.select === '' ? vm.select = '-vote_count' : vm.select = vm.select
+      vm.select === 'votes' || vm.select === '-vote_count' ? vm.select = '-vote_count' : vm.select === 'date' ? vm.select = '-$ctrl.post.created_at' : vm.select = 'title'
     }
   }
 })()

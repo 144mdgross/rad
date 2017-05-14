@@ -5,7 +5,7 @@ angular
   .module('app')
   .component('editPost', {
     controller: controller,
-    templateUrl: `../elements/edit-post.html`
+    templateUrl: `../elements/edit-post.template.html`
   })
 
   controller.$inject = ['$stateParams', '$state', '$http']
@@ -25,6 +25,7 @@ angular
               .then(comments => {
                 vm.posts.comments = comments.data
               })
+              .catch(err => console.log(err))
         })
     }
 
@@ -34,6 +35,7 @@ angular
         .then(updated => {
           $state.go('posts')
         })
+        .catch(err => console.log(err))
     }
   }
 })()
