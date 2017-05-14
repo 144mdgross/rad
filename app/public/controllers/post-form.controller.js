@@ -43,7 +43,6 @@
     console.log(post);
     $http.patch(`/api/posts/${post.id}`, post)
       .then(increment => {
-        console.log(increment);
             sort()
       })
 
@@ -51,7 +50,10 @@
 
   $scope.voteDown = function (post) {
     post.vote_count === 0 ? post.vote_count = 0 : post.vote_count -= 1
-    sort()
+    $http.patch(`/api/posts/${post.id}`, post)
+      .then(increment => {
+            sort()
+      })
   }
 
   $scope.del = function(id) {
@@ -94,7 +96,7 @@
     }
 
     function sort() {
-      vm.select === 'votes' ? vm.select = '-vote_count' : vm.select = vm.select
+      vm.select === 'votes' || vm.select === '' ? vm.select = '-vote_count' : vm.select = vm.select
     }
   }
 })()
