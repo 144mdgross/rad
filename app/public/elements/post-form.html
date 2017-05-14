@@ -9,7 +9,7 @@
     </li>
     <div class="form-inline">
       <label for="sort">  Sort by </label>
-      <select class="form-control" id="sort" ng-model="$ctrl.select" ng-options="choice for choice in options">
+      <select class="form-control" id="sort" ng-model="$ctrl.select" ng-options="choice for choice in options" ng-change="sort()">
       </select>
     </div>
   </ul>
@@ -52,7 +52,7 @@
   <div class="row">
    <div class="col-md-12">
 
-     <div class="well shadow" ng-repeat="post in $ctrl.posts | filter:$ctrl.filterText | orderBy:$ctrl.select:true">
+     <div class="well shadow" ng-repeat="post in $ctrl.posts | filter:$ctrl.filterText | orderBy:$ctrl.select">
        <a ui-sref="edit({id: post.id})"><i class="glyphicon glyphicon-pencil pull-right"></i></a>
        <a><i class="glyphicon glyphicon-remove pull-right" ng-click="del(post.id)"></i></a>
        <div class="media-left">

@@ -19,10 +19,11 @@
     vm.createPost = createPost
     vm.createComment = createComment
     vm.buttonName = 'New Post'
+    vm.sort = sort
 
     $scope.val = 3
     $scope.even = false
-    $scope.options = ['vote_count', 'title', 'date']
+    $scope.options = ['votes', 'title', 'date']
     $scope.selected = $scope.options[0]
     vm.select = $scope.selected
 
@@ -38,10 +39,19 @@
 
   $scope.voteUp = function(post) {
     post.vote_count += 1
+    console.log(post.vote_count);
+    console.log(post);
+    $http.patch(`/api/posts/${post.id}`, post)
+      .then(increment => {
+        console.log(increment);
+            sort()
+      })
+
   }
 
   $scope.voteDown = function (post) {
     post.vote_count === 0 ? post.vote_count = 0 : post.vote_count -= 1
+    sort()
   }
 
   $scope.del = function(id) {
@@ -81,7 +91,10 @@
         .then(thoughts => {
           onInit()
         })
+    }
 
+    function sort() {
+      vm.select === 'votes' ? vm.select = '-vote_count' : vm.select = vm.select
     }
   }
 })()

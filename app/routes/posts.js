@@ -79,6 +79,7 @@ function params(req) {
     body: req.body.body,
     author: req.body.author,
     image_url: req.body.image_url,
+    vote_count: req.body.vote_count
   }
 }
 
