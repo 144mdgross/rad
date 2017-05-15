@@ -8,9 +8,9 @@
       templateUrl: `../elements/post-form.template.html`
     })
 
-  controller.$inject = ['$state', '$stateParams', '$scope', '$http']
+  controller.$inject = ['$state', '$stateParams', '$scope', '$http', 'PostService']
 
-  function controller($state, $stateParams, $scope, $http) {
+  function controller($state, $stateParams, $scope, $http, PostService) {
     const vm = this
 
     vm.$onInit = onInit
@@ -26,18 +26,9 @@
     vm.select = $scope.selected
 
     function onInit() {
-      $http.get('/api/posts')
-        .then(response => {
-          vm.posts = response.data
-          for (var i = 0; i < newPost.length; i++) {
-            $http.get(`/api/posts/${newPost[i].id}/comments`)
-              .then(comments => {
-                vm.posts.comments = comments
-                sort()
-              })
-              .catch(err => console.error(err))
-          }
-        })
+      PostService.getPosts().then(res => {
+        vm.posts = res
+      })
     }
 
     $scope.counter = function() {
