@@ -68,11 +68,10 @@
     function createPost(event) {
       event.preventDefault()
 
-      $http.post('/api/posts', vm.post)
-        .then(newPost => {
-          delete vm.post
-          onInit()
-        })
+      PostService.createPost(vm.post).then(post => {
+        delete vm.post
+        onInit()
+      })
     }
 
     function createComment(event, post) {

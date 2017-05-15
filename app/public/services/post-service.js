@@ -18,12 +18,12 @@ function PostService($http) {
   }
 
   this.getComments = function (id) {
-    $http.get(BASE_URL + '/' + id + '/comments')
+    return $http.get(BASE_URL + '/' + id + '/comments')
       .then(res => res)
   }
 
   this.createPost = function(newPost) {
-    return $http.post(BASE_URL, newPost)
+    return $http.post(BASE_URL, newPost).then(result => result)
   }
 
   this.getPost = function(id) {
