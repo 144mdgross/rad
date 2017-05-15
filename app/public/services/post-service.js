@@ -6,7 +6,7 @@ angular
   .service('PostService', PostService)
 
 
-funciton PostService($http) {
+function PostService($http) {
   const BASE_URL = '/api/posts'
 
   this.getPosts = function() {

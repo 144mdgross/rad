@@ -9,7 +9,7 @@
     </li>
     <div class="form-inline">
       <label for="sort">  Sort by </label>
-      <select class="form-control" id="sort" ng-init="$ctrl.select='-vote_count'" ng-model="$ctrl.select" ng-options="choice for choice in options" ng-change="sort()">
+      <select class="form-control" id="sort"  ng-options="choice for choice in options" ng-model="$ctrl.select" ng-init="$ctrl.select = '-vote_count'" ng-change="sort()">
       </select>
     </div>
   </ul>
