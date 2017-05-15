@@ -1,26 +1,26 @@
 <div class="row">
     <div class="col-md-8">
 
-      <form novalidate ng-submit="$ctrl.updatePost($event, post); $ctrl.editPost.$setPristine()" name="$ctrl.editPost" class="form" action="#">
+      <form novalidate ng-submit="$ctrl.updatePost($event, $ctrl.update); $ctrl.editPost.$setPristine()" name="$ctrl.editPost" class="form" action="#">
         <div ng-class="{
           'has-error': $ctrl.editPost.title.$invalid && !$ctrl.editPost.title.$pristine}">
           <label for="title" class="form">Title</label>
-          <input id="title" class="form-control ng-pristine" ng-model="$ctrl.post.title" required ng-minlength="1" type="text" name="title">
+          <input id="title" class="form-control ng-pristine" ng-model="$ctrl.update.title" required ng-minlength="1" type="text" name="title">
         </div>
         <div ng-class="{
           'has-error': $ctrl.editPost.body.$invalid && !$ctrl.editPost.body.$pristine}">
           <label for="body">Body</label>
-          <textarea id="body" class="form-control ng-pristine" ng-model="$ctrl.post.body" ng-minlength="3" required type="text" name="body" ></textarea>
+          <textarea id="body" class="form-control ng-pristine" ng-model="$ctrl.update.body" ng-minlength="3" required type="text" name="body" ></textarea>
         </div>
         <div ng-class="{
           'has-error': $ctrl.editPost.author.$invalid && !$ctrl.editPost.author.$pristine }">
           <label for="author">Author</label>
-          <input id="author" class="form-control ng-pristine" ng-model="$ctrl.post.author" ng-minlength="2" name="author" required>
+          <input id="author" class="form-control ng-pristine" ng-model="$ctrl.update.author" ng-minlength="2" name="author" required>
         </div>
         <div ng-class="{
           'has-error': $ctrl.editPost.image.$invalid && !$ctrl.editPost.image.$pristine}">
           <label for="image-url">Image URL</label>
-          <input id="image" class="form-control" ng-model="$ctrl.post.image_url" name="image" ng-minlength="8" required>
+          <input id="image" class="form-control" ng-model="$ctrl.update.image_url" name="image" ng-minlength="8" required>
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary" ng-class="{'disabled': $ctrl.editPost.$invalid}" ng-disabled="$ctrl.editPost.$invalid">

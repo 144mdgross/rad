@@ -33,6 +33,7 @@ function PostService($http) {
 
   this.getPost = function(id) {
     return $http.get(BASE_URL + '/' + id)
+      .then(response => response.data)
   }
 
   this.updatePost = function(updatedPost) {

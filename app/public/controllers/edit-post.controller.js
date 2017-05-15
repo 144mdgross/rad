@@ -8,9 +8,9 @@ angular
     templateUrl: `../elements/edit-post.template.html`
   })
 
-  controller.$inject = ['$stateParams', '$state', '$http']
+  controller.$inject = ['$stateParams', '$state', '$http', 'PostService']
 
-  function controller($stateParams, $state, $http) {
+  function controller($stateParams, $state, $http, PostService) {
     const vm = this
     console.log("edit vm", vm);
 
@@ -18,24 +18,20 @@ angular
     vm.updatePost = updatePost
 
     function onInit() {
-      $http.get(`/api/posts/${$stateParams.id}`)
-        .then(response => {
-          vm.posts =response.data
-            $http.get(`/api/posts/${response.data.id}/comments`)
-              .then(comments => {
-                vm.posts.comments = comments.data
-              })
-              .catch(err => console.log(err))
+      PostService.getPost($stateParams.id)
+        .then(success => {
+          vm.posts = success
         })
     }
 
-    function updatePost(event, post) {
+    function updatePost(event, update) {
       event.preventDefault()
-      $http.patch(`/api/posts/${$stateParams.id}`, vm.post)
+      let id = vm.posts.id
+      update.id = id
+      PostService.updatePost(update)
         .then(updated => {
           $state.go('posts')
         })
-        .catch(err => console.log(err))
     }
   }
 })()
