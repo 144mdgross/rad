@@ -59,15 +59,14 @@
     }
 
     $scope.del = function(id) {
-      $http.delete(`/api/posts/${id}`)
-        .then(gone => {
+      PostService.deletePost(id)
+        .then(del => {
           onInit()
         })
     }
 
     function createPost(event) {
       event.preventDefault()
-
       PostService.createPost(vm.post).then(post => {
         delete vm.post
         onInit()
@@ -76,20 +75,10 @@
 
     function createComment(event, post) {
       event.preventDefault()
-
       PostService.createComment(post)
         .then(comment => {
           onInit()
         })
-
-      // $http.post(`/api/posts/${post.id}/comments`, {
-      //     'post_id': post.id,
-      //     'content': post.comment.text
-      //   })
-      //   .then(thoughts => {
-      //     onInit()
-      //   })
-      //   .catch(err => console.error(err))
     }
 
     // ng-change isn't working
