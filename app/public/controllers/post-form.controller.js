@@ -43,19 +43,18 @@
 
     $scope.voteUp = function(post) {
       post.vote_count += 1
-      $http.patch(`/api/posts/${post.id}`, post)
-        .then(increment => {
+      PostService.updatePost(post)
+        .then(updated => {
           sort()
         })
     }
 
     $scope.voteDown = function(post) {
       post.vote_count === 0 ? post.vote_count = 0 : post.vote_count -= 1
-      $http.patch(`/api/posts/${post.id}`, post)
-        .then(increment => {
+      PostService.updatePost(post)
+        .then(updated => {
           sort()
         })
-        .catch(err => console.error(err))
     }
 
     $scope.del = function(id) {
@@ -81,7 +80,6 @@
         })
     }
 
-    // ng-change isn't working
     function sort() {
       vm.select === "votes" || vm.select === "-vote_count" ? vm.select = '-vote_count' : vm.select === 'date' ? vm.select = '-created_at' : vm.select = 'title'
 

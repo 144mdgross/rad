@@ -37,6 +37,7 @@ function PostService($http) {
 
   this.updatePost = function(updatedPost) {
     return $http.patch(BASE_URL + '/' + updatedPost.id, updatedPost)
+      .then(updated => updated)
   }
 
   this.deletePost = function(id) {
