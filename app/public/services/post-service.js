@@ -26,6 +26,11 @@ function PostService($http) {
     return $http.post(BASE_URL, newPost).then(result => result)
   }
 
+  this.createComment = function(post) {
+    return $http.post(BASE_URL + '/' + post.id + '/comments', {'post_id': post.id, 'content': post.comment.text})
+      .then(comment => comment)
+  }
+
   this.getPost = function(id) {
     return $http.get(BASE_URL + '/' + id)
   }

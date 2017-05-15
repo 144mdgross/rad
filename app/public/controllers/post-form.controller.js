@@ -77,14 +77,19 @@
     function createComment(event, post) {
       event.preventDefault()
 
-      $http.post(`/api/posts/${post.id}/comments`, {
-          'post_id': post.id,
-          'content': post.comment.text
-        })
-        .then(thoughts => {
+      PostService.createComment(post)
+        .then(comment => {
           onInit()
         })
-        .catch(err => console.error(err))
+
+      // $http.post(`/api/posts/${post.id}/comments`, {
+      //     'post_id': post.id,
+      //     'content': post.comment.text
+      //   })
+      //   .then(thoughts => {
+      //     onInit()
+      //   })
+      //   .catch(err => console.error(err))
     }
 
     // ng-change isn't working
